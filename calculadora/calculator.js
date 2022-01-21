@@ -4,7 +4,11 @@ const express=require("express");
 const app=express();
 
 app.get("/",function(req,res){
-    res.send("Hello wold!")
+    //send palabras
+    // res.send("Hello wold!")
+
+    //send paginas __dirname=directorio actual
+    res.sendFile(__dirname+"/index.html");
 });
 
 app.listen(3000,function(){
