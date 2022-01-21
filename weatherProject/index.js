@@ -12,13 +12,13 @@ app.get("/",function(req,res){
             const weather_data=JSON.parse(data)
             const temp=weather_data.main.temp;
             const desc=weather_data.weather[0].description;
-            console.log(temp);
-            console.log(desc)
-        })
+            const icon=weather_data.weather[0].icon;
+            const imageUrl="http://openweathermap.org/img/wn/"+icon+"@2x.png";
+            
+            res.send("<p>The weather is currently: "+desc+"</p><h2>The temperature in Monterrey is: "+temp+" degress Celcius.</h2><img src="+imageUrl+">");
+        });
     });
-
-    res.send("Server is up and running")
-})
+});
 
 app.listen(3000,function(){
     console.log("Server is running on port 3000");
