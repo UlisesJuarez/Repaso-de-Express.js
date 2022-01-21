@@ -8,6 +8,13 @@ app.get("/",function(req,res){
     
     https.get(url,function(response){
         console.log(response.statusCode);
+        response.on("data",function(data){
+            const weather_data=JSON.parse(data)
+            const temp=weather_data.main.temp;
+            const desc=weather_data.weather[0].description;
+            console.log(temp);
+            console.log(desc)
+        })
     });
 
     res.send("Server is up and running")
